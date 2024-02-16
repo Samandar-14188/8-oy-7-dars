@@ -11,24 +11,25 @@ const HomeProducts = async () => {
   const products = await getProducts();
   return (
     <div>
-      <article className="product">
-  <div className="product-container">
-    <img src="./images/main-bcg.jpeg" className="product-img img" alt="" />
-    <div className="product-icons">
-      <a href="product.html?id=1" className="product-icon">
-        <i className="fas fa-search" />
-        <button className="product-cart-btn product-icon" data-id={1}>
-          <i className="fas fa-shopping-cart" />
-        </button>
-      </a>
-    </div>
-  </div>
-  <footer>
-    <p className="product-name">name</p>
-    <h4 className="product-price">$9.99</h4>
-  </footer>
-</article>
-
+      {products && products.map((product) => (
+        <article key={product.id} className="product">
+          <div className="product-container">
+            <img src={product.images[0]} className="product-img img" alt="" />
+            <div className="product-icons">
+              <a href={`product.html?id=${product.id}`} className="product-icon">
+                <i className="fas fa-search" />
+                <button className="product-cart-btn product-icon" data-id={product.id}>
+                  <i className="fas fa-shopping-cart" />
+                </button>
+              </a>
+            </div>
+          </div>
+          <footer>
+            <p className="product-name">{product.title}</p>
+            <h4 className="product-price">${product.price}</h4>
+          </footer>
+        </article>
+      ))}
     </div>
   );
 };
