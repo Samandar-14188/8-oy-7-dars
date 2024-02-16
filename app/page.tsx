@@ -1,6 +1,4 @@
 import Link from "next/link";
-import { Suspense } from "react";
-import HomeProducts from "./components/HomeProducts";
 
 export default function Home() {
   return (
@@ -107,10 +105,8 @@ export default function Home() {
             </h2>
           </div>
           <div className="featured-center section-center">
-            {/* <h2 className="section-loading">loading...</h2> */}
-            <Suspense>
-              <HomeProducts />
-            </Suspense>
+            <h2 className="section-loading">loading...</h2>
+         
           </div>
 
           <Link className="btn" href={"/products"}>
